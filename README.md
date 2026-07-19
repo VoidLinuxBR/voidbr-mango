@@ -1,3 +1,3 @@
-# voidbr-pkgfile
+# voidbr-mangowm
 
-Template for VoidBR pkgmake/pkgfile packages
+VoidBR MANGOWM Meta Package 
