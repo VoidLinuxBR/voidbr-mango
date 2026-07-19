@@ -1,3 +1,3 @@
-# voidbr-mangowm
+# voidbr-mango
 
-VoidBR MANGOWM Meta Package 
+VoidBR MANGO Meta Package
