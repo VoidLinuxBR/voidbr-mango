@@ -15,7 +15,7 @@ md5sums=('SKIP')
 makedepends=()
 depends=(
   mangowc                 # Dwl-based wayland compositor using scenefx
-	hyprpaper               # a blazing fast wayland wallpaper utility with IPC controls
+	swaybg                  # Wallpaper tool for Wayland compositors
   sddm                    # QML based X11 display manager
   voidbr-sddm-themes      # sddm Themes for VoidLinuxBR
   # weston                # Reference implementation of a Wayland compositor
@@ -95,7 +95,7 @@ depends=(
 	NetworkManager            # Gerenciador de rede (daemon)
 	network-manager-applet    # Ícone de bandeja para controlar conexões
 	voidbr-base-config        # Configuração base personalizada
-#	voidbr-mangowm-config    # Configuração base personalizada
+	voidbr-mango-config       # Configuração base personalizada
 	voidbr-wallpapers         # Wallpapers for Void Linux BR
 	voidbr-tokyo-theme        # TokyoNight-Dark theme with icons, cursors, and wallpaper
   voidbr-dracula-theme      # Tema visual Dracula aplicado
