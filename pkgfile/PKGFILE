@@ -61,8 +61,7 @@ depends=(
 	optipng                 # Otimizador de compressão para arquivos PNG
 	sassc                   # Compilador CSS (SASS)
 	jq                      # Processador de arquivos JSON via CLI
-	#swaylock               # Bloqueador de tela para Wayland
-  swaylock-effects
+	swaylock               # Bloqueador de tela para Wayland
 	swayidle                # Gerenciador de inatividade (idle) e bloqueio
 	sway-audio-idle-inhibit # Inibe o bloqueio/hibernação durante reprodução de áudio
 	#wmenu                   # Menu de seleção estilo dmenu/wofi para Wayland
