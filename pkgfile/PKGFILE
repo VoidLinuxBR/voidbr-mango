@@ -103,8 +103,8 @@ depends=(
   voidbr-beauty-icons
 	firefox                   # Mozilla Firefox web browser
 	firefox-i18n-pt-BR        # Firefox Portuguese (Brazilian) language pack
-	# nerd-fonts              # Iconic font aggregator collection
-	ttf-jetbrains-mono-nerd   # Patched font JetBrains Mono from nerd fonts library
+  ttf-jetbrains-mono-nerd   # Patched font JetBrains Mono from nerd fonts library
+  ttf-ubuntu-font-family    # Ubuntu font family
 	lm_sensors                # Utilities to read temperature/voltage/fan sensors
 	acpi                      # Informations about ACPI devices (battery, thermal sensors and power)
 	acpid                     # ACPI Daemon (acpid) With Netlink Support
