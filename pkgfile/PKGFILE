@@ -98,9 +98,9 @@ depends=(
 	voidbr-mango-config       # Configuração base personalizada
 	voidbr-wallpapers         # Wallpapers for Void Linux BR
 	voidbr-tokyo-theme        # TokyoNight-Dark theme with icons, cursors, and wallpaper
-  voidbr-dracula-theme      # Tema visual Dracula aplicado
-  voidbr-professional-theme
-  voidbr-xfwm-axiom-theme
+# voidbr-dracula-theme      # Tema visual Dracula aplicado
+# voidbr-professional-theme
+# voidbr-xfwm-axiom-theme
   voidbr-beauty-icons
 	firefox                   # Mozilla Firefox web browser
 	firefox-i18n-pt-BR        # Firefox Portuguese (Brazilian) language pack
@@ -113,6 +113,10 @@ depends=(
   noto-fonts-emoji          # Google Noto Emoji Fonts
   nwg-bar                   # GTK3-based button bar for wlroots-based compositors
   gnome-system-monitor      # Process viewer and system resource monitor for GNOME
+  kitty                     # Modern, hackable, featureful, OpenGL based terminal emulator
+  gnome-keyring             # GNOME password and secret manager
+  qt5ct                     # Qt5 Configuration Tool
+  qt6ct                     # Qt6 Configuration Tool
 )
 
 package() {
