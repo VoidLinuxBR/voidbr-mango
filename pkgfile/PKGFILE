@@ -78,7 +78,6 @@ depends=(
   tumbler                 # Miniaturas no Thunar
 	engrampa                # Gerenciador de arquivos compactados
 	pluma                   # Editor de texto leve (MATE)
-	nwg-look                # Configurador de temas GTK para Wayland
 	atril                   # Visualizador de documentos (PDFs)
 	pipewire                # Servidor de áudio moderno
 	wireplumber             # Gerenciador de sessão para PipeWire
@@ -111,7 +110,9 @@ depends=(
 	acpid                     # ACPI Daemon (acpid) With Netlink Support
   htop                      # Interactive process viewer
   noto-fonts-emoji          # Google Noto Emoji Fonts
+  nwg-look                  # Configurador de temas GTK para Wayland
   nwg-bar                   # GTK3-based button bar for wlroots-based compositors
+  nwg-launchers             # GTK-based launchers for window managers
   gnome-system-monitor      # Process viewer and system resource monitor for GNOME
   kitty                     # Modern, hackable, featureful, OpenGL based terminal emulator
   gnome-keyring             # GNOME password and secret manager
