@@ -18,7 +18,7 @@ depends=(
 	swaybg                  # Wallpaper tool for Wayland compositors
   sddm                    # QML based X11 display manager
   voidbr-sddm-themes      # sddm Themes for VoidLinuxBR
-  # weston                # Reference implementation of a Wayland compositor
+  #weston                 # Reference implementation of a Wayland compositor
   #
   wlogout                 # Wayland based logout menu
  	Waybar                  # Barra de status customizável para Wayland
@@ -111,6 +111,7 @@ depends=(
 	acpid                     # ACPI Daemon (acpid) With Netlink Support
   htop                      # Interactive process viewer
   noto-fonts-emoji          # Google Noto Emoji Fonts
+  nwg-bar                   # GTK3-based button bar for wlroots-based compositors
 )
 
 package() {
