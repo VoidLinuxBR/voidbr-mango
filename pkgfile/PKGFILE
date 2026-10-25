@@ -149,6 +149,7 @@ depends=(
 	io.elementary.calculator # Calculadora (a mesma do Projeto 2)
 	gnome-disk-utility      # Discos: formatar pendrive, saúde do disco
 	voidbr-webapps          # Webapps do VoidBR
+	voidbr-iso-writer
 
 	# --- Mídia e codecs ---
 	ffmpeg
