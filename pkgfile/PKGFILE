@@ -1,4 +1,5 @@
 # Maintainer: Vilmar Catafesta <vcatafesta@gmail.com>
+# Contributor: Wilton (Wiljapa) <wilton.kikkawa@gmail.com>
 
 pkgname=voidbr-mango
 pkgdesc="VoidBR MANGO Meta Package"
@@ -14,39 +15,155 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 makedepends=()
 depends=(
+	# --- Base VoidBR ---
+	# Só o voidbr-base-common (sistema, boot, firmware, instalador), como nos
+	# metapacotes do Umbriel e do Niri/DMS. Não usa o voidbr-gui-common nem o
+	# voidbr-wayland-common: eles trazem lightdm, plank, rxvt-unicode e outros
+	# que a sessão Mango não usa. O necessário está listado abaixo (inclusive o
+	# weston, que o SDDM em modo Wayland usa para a tela de login).
 	voidbr-base-common
-	voidbr-wayland-common
-	voidbr-gui-common
-	atril                   # Visualizador de documentos (PDFs)
-	cliphist                # Histórico da área de transferência
-	engrampa                # Gerenciador de arquivos compactados
-	eom                     # Visualizador de imagens (Eye of MATE)
-	foot                    # Terminal leve e otimizado para Wayland
-	gnome-system-monitor    # Process viewer and system resource monitor for GNOME
-	grim                    # Utilitário para captura de tela (screenshot)
-	kanshi                  # Gerenciador dinâmico de monitores
-	mako                    # Servidor de notificações Wayland
-	mangowc                 # Dwl-based wayland compositor using scenefx
-	nwg-bar                 # GTK3-based button bar for wlroots-based compositors
-	nwg-launchers           # GTK-based launchers for window managers
-	nwg-look                # Configurador de temas GTK para Wayland
-	pluma                   # Editor de texto leve (MATE)
-	slurp                   # Seleção de área para captura de tela
-	swappy                  # Wayland native snapshot editing tool, inspired by Snappy on macOS
-	sway-audio-idle-inhibit # Inibe o bloqueio/hibernação durante reprodução de áudio
-	swaybg                  # Wallpaper tool for Wayland compositors
-	swayidle                # Gerenciador de inatividade (idle) e bloqueio
-	swaylock                # Bloqueador de tela para Wayland
-	Thunar                  # Gerenciador de arquivos (XFCE)
-	thunar-archive-plugin   # Integração de compactação no Thunar
-	tumbler                 # Miniaturas no Thunar
-	voidbr-mango-config     # Configuração base personalizada
-	Waybar                  # Barra de status customizável para Wayland
-	wl-clipboard            # Ferramentas de clipboard (wl-copy/wl-paste)
-	wlogout                 # Wayland based logout menu
-	wofi                    # Lançador de aplicativos e menu de busca
-	xdg-desktop-portal-wlr
-	yad
+
+	# --- Sessão e sistema (antes vinham do voidbr-gui-common) ---
+	dbus-elogind            # D-Bus com suporte ao elogind (sessão)
+	elogind                 # Sessão e acesso a teclado/mouse/vídeo (dbus-elogind e polkit-elogind hoje não o puxam)
+	polkit-elogind          # polkit integrado ao elogind
+	lxqt-policykit          # Agente polkit gráfico (senha de administrador)
+	gnome-keyring           # Chaveiro de senhas (aberto no login pelo PAM do SDDM)
+	libsecret               # API do chaveiro usada pelos apps
+	dconf                   # Configurações GTK
+	glib-networking         # TLS/HTTPS para aplicativos GLib/GTK
+	gvfs                    # Lixeira, montagem e rede no Thunar
+	gvfs-mtp                # Celulares (MTP) no Thunar
+	gvfs-afc                # iPhone/iPad no Thunar
+	gvfs-smb                # Pastas compartilhadas da rede (Windows/Samba) no Thunar
+	udisks2                 # Montagem de discos
+	udiskie                 # Montagem automática de pendrives (ícone na bandeja)
+	upower                  # Energia e bateria
+	power-profiles-daemon   # Perfil de energia (eco / equilibrado / desempenho) na barra
+	NetworkManager          # Rede (nmtui no clique da barra)
+	network-manager-applet  # Ícone de rede na bandeja
+	bluez                   # Bluetooth
+	blueman                 # Ícone de Bluetooth na bandeja
+
+	# --- Compositor e login ---
+	mangowc                 # Compositor Wayland dwl + scenefx (mango + mmsg)
+	voidbr-mango-config     # Configuração base (skel) e scripts voidbr-*
+	sddm                    # Tela de login
+	voidbr-sddm-themes      # Temas do SDDM (o voidbr-mango-config usa o tema voidbr como base)
+	weston                  # Compositor da tela de login (SDDM em modo Wayland; vinha do voidbr-wayland-common)
+	xorg-server-xwayland    # Aplicativos X11
+	qt5-wayland
+	qt6-wayland
+	xdg-desktop-portal
+	xdg-desktop-portal-wlr  # Captura e compartilhamento de tela
+	xdg-desktop-portal-gtk  # Seletor de arquivos e demais portais
+	xdg-utils
+	xdg-user-dirs
+
+	# --- Barra, menus e notificações ---
+	Waybar                  # Barra (ext/workspaces, wireplumber, mpris, privacy...)
+	rofi                    # Lançador e menus (temas, captura, energia, clipboard)
+	mako                    # Notificações ("não perturbe" pela barra)
+	libnotify               # notify-send dos scripts
+	playerctl               # Módulo de mídia (mpris)
+
+	# --- Áudio (PipeWire) ---
+	pipewire
+	wireplumber             # wpctl: teclas e popup de volume
+	alsa-pipewire
+	libspa-bluetooth        # Áudio Bluetooth
+	pulseaudio-utils        # pactl (gravação com som do sistema)
+	alsa-utils
+	rtkit
+	pavucontrol             # Mixer
+
+	# --- Captura, gravação e clipboard ---
+	grim                    # Captura de tela
+	slurp                   # Seleção de área
+	satty                   # Anotação da captura de área
+	wf-recorder             # Gravação de tela
+	wl-clipboard            # wl-copy / wl-paste
+	cliphist                # Histórico da área de transferência (Super+V)
+
+	# --- Wallpaper, temas e aparência ---
+	awww                    # Wallpaper com transição animada
+	matugen                 # Tema de cores automático pelo wallpaper
+	nwg-look                # Tema GTK, ícones e cursor
+	papirus-icon-theme
+	adwaita-icon-theme
+	adw-gtk-theme           # GTK3 no estilo libadwaita (segue as cores do voidbr-theme)
+	bibata-modern-ice       # Cursor
+
+	# --- Bloqueio, inatividade e utilidades da barra ---
+	hyprlock                # Tela de bloqueio
+	hypridle                # Apaga a tela (5 min) e bloqueia (10 min)
+	wlsunset                # Luz noturna
+	brightnessctl           # Teclas de brilho
+	wlr-randr               # Modos de vídeo para o voidbr-display
+	ddcutil                 # Brilho de monitores externos (DDC/CI; módulo i2c-dev no voidbr-mango-config)
+	btop                    # Clique em CPU/memória
+
+	# --- Scripts voidbr-* (Python + GTK) ---
+	python3
+	python3-gobject
+	gtk4                    # Layouts, wallpaper, calendário, atalhos, monitores
+	gtk+3                   # Popup de volume
+	gtk-layer-shell         # Popup de volume ancorado na barra
+	gdk-pixbuf              # Miniaturas da galeria de wallpaper
+	webp-pixbuf-loader      # Miniaturas de wallpapers em WebP
+	xsettingsd              # Tema, cursor e fonte para apps X11 (Xwayland)
+	librsvg                 # Ícones SVG
+	procps-ng               # pkill / pgrep
+	util-linux              # setsid
+	yad                     # Caixas de diálogo GTK
+
+	# --- Aceleração gráfica ---
+	mesa
+	mesa-dri
+	mesa-vaapi              # Gravação pela GPU, quando o hardware tem codificador
+	mesa-vulkan-intel
+	mesa-vulkan-radeon
+	intel-media-driver
+	libva-intel-driver
+	libva-utils             # vainfo (o voidbr-record detecta a GPU com ele)
+	vulkan-loader
+
+	# --- Aplicativos ---
+	foot                    # Terminal
+	firefox
+	firefox-i18n-pt-BR
+	Thunar
+	thunar-volman
+	thunar-archive-plugin
+	tumbler
+	ffmpegthumbnailer
+	file-roller
+	celluloid               # Vídeo
+	amberol                 # Música
+	loupe                   # Imagens
+	libavif                 # Imagens AVIF
+	libheif                 # Imagens HEIC/HEIF (fotos de celular)
+	mousepad                # Texto
+	zathura                 # PDF
+	zathura-pdf-mupdf
+	io.elementary.calculator # Calculadora (a mesma do Projeto 2)
+	gnome-disk-utility      # Discos: formatar pendrive, saúde do disco
+	voidbr-webapps          # Webapps do VoidBR
+
+	# --- Mídia e codecs ---
+	ffmpeg
+	gst-libav
+	gst-plugins-base1
+	gst-plugins-good1
+	gst-plugins-bad1
+	gst-plugins-ugly1
+
+	# --- Fontes ---
+	nerd-fonts-symbols-ttf  # Ícones da barra e dos menus
+	font-awesome6
+	noto-fonts-ttf          # Fonte da interface (Noto Sans)
+	noto-fonts-emoji
+	dejavu-fonts-ttf
 )
 backup=()
 
@@ -100,7 +217,9 @@ post_install() {
 		fi
 
 		log "Ativando serviços"
+		/usr/local/bin/vservice add NetworkManager --quiet || true
 		/usr/local/bin/vservice add sddm --quiet || true
+		/usr/local/bin/vservice add power-profiles-daemon --quiet || true
 	fi
 
 	log "${YELLOW}Instalação completa. Reinicie o sistema...${RESET}"
