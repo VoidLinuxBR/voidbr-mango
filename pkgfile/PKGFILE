@@ -16,14 +16,11 @@ md5sums=('SKIP')
 makedepends=()
 depends=(
 	# --- Base VoidBR ---
-	# Só o voidbr-base-common (sistema, boot, firmware, instalador), como nos
-	# metapacotes do Umbriel e do Niri/DMS. Não usa o voidbr-gui-common nem o
-	# voidbr-wayland-common: eles trazem lightdm, plank, rxvt-unicode e outros
-	# que a sessão Mango não usa. O necessário está listado abaixo (inclusive o
-	# weston, que o SDDM em modo Wayland usa para a tela de login).
+	# Sistema, boot, firmware e instalador. O restante necessário para a
+	# sessão Mango está listado abaixo.
 	voidbr-base-common
 
-	# --- Sessão e sistema (antes vinham do voidbr-gui-common) ---
+	# --- Sessão e sistema ---
 	dbus-elogind            # D-Bus com suporte ao elogind (sessão)
 	elogind                 # Sessão e acesso a teclado/mouse/vídeo (dbus-elogind e polkit-elogind hoje não o puxam)
 	polkit-elogind          # polkit integrado ao elogind
@@ -50,7 +47,7 @@ depends=(
 	voidbr-mango-config     # Configuração base (skel) e scripts voidbr-*
 	sddm                    # Tela de login
 	voidbr-sddm-themes      # Temas do SDDM (o voidbr-mango-config usa o tema voidbr como base)
-	weston                  # Compositor da tela de login (SDDM em modo Wayland; vinha do voidbr-wayland-common)
+	weston                  # Compositor da tela de login (SDDM em modo Wayland)
 	xorg-server-xwayland    # Aplicativos X11
 	qt5-wayland
 	qt6-wayland
